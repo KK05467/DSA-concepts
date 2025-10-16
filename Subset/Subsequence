@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void subsequence(int index, vector<int>& arr, vector<int>& temp) {
+    int n = arr.size();
+    if (index == n) {
+        // Print the current subsequence
+        for (int num : temp)
+            cout << num << " ";
+        cout << endl;
+        return;
+    }
+
+    // Include the current element
+    temp.push_back(arr[index]);
+    subsequence(index + 1, arr, temp);
+
+    // Exclude the current element
+    temp.pop_back();
+    subsequence(index + 1, arr, temp);
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3};
+    vector<int> temp;
+    subsequence(0, arr, temp);
+    return 0;
+}
