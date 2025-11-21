@@ -33,3 +33,75 @@
 //     return 0;
 // }
 
+// #include<iostream>
+// using namespace std;
+
+// class Number {
+//     public:
+//     int num;
+//     void get_number(){
+//         cin>>num;
+//     }
+// };
+
+// class Cube : public Number{
+//     void showCube(){
+//         cout<<num * num * num<<endl;
+//     }
+// };
+
+// class Square : public Number {
+//     void showSquare(){
+//         cout<<num * num<< endl;
+//     }
+// };
+
+// int main() {
+//     Cube obj1;
+//     Square obj2;
+
+//     obj1.get_number();
+//     obj1.showCube();
+
+//     obj2.get_number();
+//     obj2.showSquare();
+//     return 0;
+// }
+
+#include<iostream>
+using namespace std;
+
+class Number {
+public:
+    int num;
+    void get_number() {
+        cin >> num;
+    }
+};
+
+class Cube : public Number {
+public:
+    void showCube() {
+        cout << num * num * num << endl;
+    }
+};
+
+class Square : public Number {
+public:
+    void showSquare() {
+        cout << num * num << endl;
+    }
+};
+
+int main() {
+    Cube obj1;
+    Square obj2;
+
+    obj1.get_number();
+    obj1.showCube();
+
+    obj2.get_number();
+    obj2.showSquare();
+
+    return 0;
+}
