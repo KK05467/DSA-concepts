@@ -1,0 +1,46 @@
+class Solution {
+public:
+    ListNode* doubleIt(ListNode* head) {
+        ListNode* ptr = head;
+        long long num = 0;
+
+        while(ptr != nullptr){
+            num = num * 10 + ptr->val;
+            ptr = ptr->next;
+        }
+
+        num = num * 2;
+
+        vector<int> ans;
+        while(num > 0){
+            ans.push_back(num % 10);
+            num /= 10;
+        }
+
+        reverse(ans.begin(), ans.end());
+
+        // FIX: if result has more digits, add new nodes
+        if (ans.size() > 0) {
+            int len = 0;
+            ptr = head;
+            while (ptr) { len++; ptr = ptr->next; }
+
+            int diff = ans.size() - len;
+            while (diff--) {
+                ListNode* newNode = new ListNode(0);
+                newNode->next = head;
+                head = newNode;
+            }
+        }
+
+        ptr = head;
+        int i = 0;
+        while(ptr != nullptr && i < ans.size()){
+            ptr->val = ans[i];
+            ptr = ptr->next;
+            i++;
+        }
+
+        return head;
+    }
+};
